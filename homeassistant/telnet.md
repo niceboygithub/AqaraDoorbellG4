@@ -40,9 +40,9 @@ run bootcmd
 ubifs_mount.sh 0 /res
 ubifs_mount.sh 1 /data
 ```
-6. Then delete the 'passwd' file.
+6. Then change root password
 ```
-rm /res/passwd
+passwd
 ```
 7. Create the post_init.sh
 ```
@@ -52,7 +52,4 @@ mkdir -p /data/scripts; chattr -i /data/scripts/post_init.sh; echo -e "#\!/bin/s
 ```
 mkdir -p /data/scripts; chattr -i /data/scripts/post_init.sh; echo -e "#\!/bin/sh\n\nfw_manager.sh -r\nfw_manager.sh -t -k\nrtsp &\n" > /data/scripts/post_init.sh; chmod a+x /data/scripts/post_init.sh; chattr +i /data/scripts/post_init.sh
 ```
-8. Restart Doorbell G4, then telnet to G4 to clear password
-```
-passwd -d root
-```
+8. Restart Doorbell G4, then telnet to G4 to check password
